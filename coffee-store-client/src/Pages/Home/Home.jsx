@@ -1,7 +1,11 @@
+import Features from "./Compunents/Features/Features";
+import Header from "./Compunents/Header/Header";
+
 const Home = () => {
   return (
     <div>
-      <h1 className="font-rancho">This is the fucking home page</h1>
+      <Header></Header>
+      <Features></Features>
     </div>
   );
 };

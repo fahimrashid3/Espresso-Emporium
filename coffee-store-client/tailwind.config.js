@@ -8,6 +8,7 @@ export default {
           1: "#331A15",
           2: "#374151",
           3: "#1B1A1A",
+          4: "#ECEAE3", //section bg
         },
       },
     },
