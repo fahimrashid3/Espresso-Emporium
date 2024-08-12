@@ -5,7 +5,7 @@ import properRoasting from "../../../../assets/images/icons/4.png";
 const Features = () => {
   return (
     <div className=" bg-primary-4">
-      <div className="flex justify-center py-20 gap-5 max-w-7xl mx-auto">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 justify-center py-20 gap-5 max-w-7xl mx-auto">
         <div className="space-y-3">
           <img className="mx-auto" src={awesomeAroma} alt="" />
           <h1 className="font-rancho text-center text-4xl font-semibold">

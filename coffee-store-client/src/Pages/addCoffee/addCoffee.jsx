@@ -1,13 +1,44 @@
 import { Link } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
+import Swal from "sweetalert2";
+
 //
 const addCoffee = () => {
   const handelAddCoffee = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+    const newCoffee = { name, chef, supplier, taste, category, details, photo };
+
+    // sent data to the server
+    fetch("http://localhost:5000/coffee", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "New Item added successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
   return (
     <div className="lg:max-w-7xl md:max-w-full md:mx-20 mx-10 lg:mx-auto lg:my-20 md:my-16 my-10">
-      <Link>
+      <Link to="/">
         <button
           className="
         flex items-center gap-2 lg:mt-20 md:mt-16 mt-12 font-rancho lg:font-bold md:font-semibold lg:text-3xl md:text-2xl text-primary-2
@@ -114,7 +145,7 @@ const addCoffee = () => {
                 <input
                   className="py-2 px-4 w-full rounded-lg text-primary-1 hover:border hover:border-primary-1 focus:border-primary-1"
                   type="text"
-                  name="name"
+                  name="photo"
                   placeholder="Enter photo URL"
                 />
               </div>
