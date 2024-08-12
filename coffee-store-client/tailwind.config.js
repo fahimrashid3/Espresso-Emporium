@@ -7,8 +7,9 @@ export default {
         primary: {
           1: "#331A15",
           2: "#374151",
-          3: "#1B1A1A",
+          3: "#1B1A1A", //primary dark
           4: "#ECEAE3", //section bg
+          5: "#D2B48C", //btn bg
         },
       },
     },

@@ -19,11 +19,11 @@ const Footer = () => {
     <div>
       <div style={{ backgroundImage: `url(${BackgroundImg})` }}>
         <footer className="text-neutral-content p-10">
-          <div className="max-w-7xl mx-auto mt-10">
-            <img className="h-24 w-20 " src={footerLogo} alt="" />
+          <div className="lg:max-w-7xl lg:mx-auto mt-10 ">
+            <img className="h-24 w-20" src={footerLogo} alt="" />
           </div>
-          <div className=" max-w-7xl mx-auto flex  mb-3 justify-between gap-32 mt-6">
-            <div className="space-y-6 flex-1">
+          <div className=" lg:max-w-7xl md:xm-10 items-center lg:text-left text-center mx-auto lg:flex  mb-3 justify-between gap-32 mt-6">
+            <div className="space-y-6 flex-1 ">
               <h1 className="font-rancho font-bold text-5xl text-primary-1">
                 Espresso Emporium
               </h1>
@@ -31,7 +31,7 @@ const Footer = () => {
                 Always ready to be your friend. Come & Contact with us to share
                 your memorable moments, to share with your best companion.
               </p>
-              <div className="text-primary-1 text-4xl flex gap-3">
+              <div className="text-primary-1 text-4xl flex gap-3 ">
                 <FaFacebook />
                 <FaInstagram />
                 <FaXTwitter />
