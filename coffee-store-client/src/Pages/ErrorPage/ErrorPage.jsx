@@ -6,7 +6,7 @@ import Footer from "../../Shared/Footer/Footer";
 const ErrorPage = () => {
   return (
     <div>
-      <Link>
+      <Link to="/">
         <button className="flex items-center gap-2 mx-auto mt-20 font-rancho font-bold text-3xl text-primary-2">
           <IoArrowBack /> Back to home
         </button>

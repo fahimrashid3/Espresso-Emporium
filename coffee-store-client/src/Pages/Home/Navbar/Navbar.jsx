@@ -7,13 +7,17 @@ const Navbar = () => {
         <li className="text-white hover:underline">Add Coffee</li>
       </NavLink>
 
-      <NavLink to="/updateCoffee">
-        <li className="text-white hover:underline ">Update Coffee</li>
+      <NavLink to="/users">
+        <li className="text-white hover:underline">Users </li>
+      </NavLink>
+
+      <NavLink to="/signIn">
+        <li className="text-white hover:underline ">Sign In</li>
       </NavLink>
     </>
   );
   return (
-    <div className="navbar bg-black">
+    <div className="navbar bg-black ">
       <div className="dropdown">
         <ul
           tabIndex={0}

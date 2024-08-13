@@ -6,6 +6,9 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import DeleteCoffee from "../Pages/DeleteCoffee/DeleteCoffee";
 import ViewDetails from "../Pages/ViewDetail/ViewDetails";
 import UpdateCoffee from "../Pages/updateCoffee/updateCoffee";
+import SignIn from "../Authentication/SignIn/SignIn";
+import SignUp from "../Authentication/SignUp/SignUp";
+import Users from "../Pages/Users/Users";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,20 @@ const router = createBrowserRouter([
         element: <ViewDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/coffee/${params.id}`),
+      },
+      {
+        path: "/signIn",
+        element: <SignIn></SignIn>,
+      },
+
+      {
+        path: "/signUP",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/users",
+        element: <Users></Users>,
+        loader: () => fetch("http://localhost:5000/users"),
       },
     ],
   },

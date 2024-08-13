@@ -28,15 +28,16 @@ async function run() {
     await client.connect();
     const database = client.db("coffeeDB");
     const coffeeCollection = database.collection("coffee");
+    const userCollection = database.collection("users");
 
-    // see coffee or read data (all)
+    // see coffee or read data (all) coffee
     app.get("/coffee", async (req, res) => {
       const cursor = coffeeCollection.find();
       const result = await cursor.toArray();
       res.send(result);
     });
 
-    // view one data
+    // view one data coffee
     app.get("/coffee/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
@@ -51,7 +52,7 @@ async function run() {
       res.send(result);
     });
 
-    // delete one item
+    // delete one item coffee
     app.delete("/coffee/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
@@ -79,7 +80,30 @@ async function run() {
       const result = await coffeeCollection.updateOne(filter, coffee, options);
       res.send(result);
     });
+    // ........................................................................................................................................
+    // user related apis
+    // find all data user
+    app.get("/users", async (req, res) => {
+      const cursor = userCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
 
+    // create a user
+    app.post("/users", async (req, res) => {
+      const user = req.body;
+      const result = await userCollection.insertOne(user);
+      res.send(result);
+    });
+
+    app.delete("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await userCollection.deleteOne(query);
+      res.send(result);
+    });
+
+    // ......................................................................................................................................
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(

@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Features from "./Compunents/Features/Features";
 import Header from "./Compunents/Header/Header";
-// import Navbar from "./Navbar/Navbar";
+import Navbar from "./Navbar/Navbar";
 import CoffeeDetails from "../CoffeeDetails/CoffeeDetails";
 
 import BackgroundImg from "../../assets/images/more/1.png";
@@ -12,7 +12,7 @@ const Home = () => {
   const [coffees, setCoffees] = useState(LoadedCoffees);
   return (
     <div>
-      {/* <Navbar></Navbar> */}
+      <Navbar></Navbar>
       <Header></Header>
       <Features></Features>
 
