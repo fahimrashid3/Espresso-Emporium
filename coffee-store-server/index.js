@@ -5,6 +5,7 @@ require("dotenv").config();
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 const app = express();
+
 const port = process.env.PORT || 5000;
 
 // middleware
@@ -93,6 +94,18 @@ async function run() {
     app.post("/users", async (req, res) => {
       const user = req.body;
       const result = await userCollection.insertOne(user);
+      res.send(result);
+    });
+
+    app.patch("/users", async (req, res) => {
+      const user = req.body;
+      const filter = { email: user.email };
+      const updatedUser = {
+        $set: {
+          lastLoggedAt: user.lastLoggedAt,
+        },
+      };
+      const result = await userCollection.updateOne(filter, updatedUser);
       res.send(result);
     });
 
