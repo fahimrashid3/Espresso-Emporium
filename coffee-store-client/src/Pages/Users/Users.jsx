@@ -24,7 +24,7 @@ const Users = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -67,7 +67,7 @@ const Users = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.createdAt}</td>
-                  <td></td>
+                  <td>{user.lastLoggedAt}</td>
                   <td>
                     <button
                       onClick={() => handelDelete(user._id)}

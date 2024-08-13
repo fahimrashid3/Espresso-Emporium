@@ -1,20 +1,54 @@
-// import { Link } from "react-router-dom";
-// import Navbar from "../../Shared/Navbar/Navbar";
 import fb from "../../assets/images/icons/fb.png";
 import google from "../../assets/images/icons/google.png";
 import { IoArrowBack } from "react-icons/io5";
 import BackgroundImg from "../../assets/images/more/11.png";
 
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+// import Swal from "sweetalert2";
 
-// import google from "../../../src/assets/images/icons/google.png";
 const SignIn = () => {
+  const { signInUser } = useContext(AuthContext);
   const handelLogin = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    console.log(email, password);
+
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        const user = {
+          email,
+          lastLoggedAt: result?.user?.metadata?.lastSignInTime,
+        };
+        // update last log at in the db
+        fetch("http://localhost:5000/users", {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
+
+        // if (result.insertedId) {
+        //   Swal.fire({
+        //     title: "Success!",
+        //     text: "Account created successfully",
+        //     icon: "success",
+        //     confirmButtonText: "Cool",
+        //   });
+        //   form.reset();
+        // }
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
   return (
     <div style={{ backgroundImage: `url(${BackgroundImg})` }}>
